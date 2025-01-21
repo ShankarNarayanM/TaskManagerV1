@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    {% include "includes/sidePanel.html" %}
+    
+    <main class="container col-10">
+        <div class="shadow-lg border border-warning rounded-3 p-3">
+            <h2>Task Board</h2>
+            <table class="table table-sm align-middle table-bordered table-primary table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Task</th>
+                        <th class="text-center">Start date</th>
+                        <th class="text-center">End date</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Priority</th>
+                        <th class="text-center">Progress</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in tasks %}
+                    <tr>
+                        <td class="text-center">{{t.task}}</td>
+                        <td class="text-center">{{t.startDate}}</td>
+                        <td class="text-center">{{t.endDate}}</td>
+                        <td class="text-center">
+                        <span>{{t.status}}</span>
+                        </td>
+                        <td class="text-center">{{t.priority}}</td>
+                        <td class="text-center">
+                        <div class="progress">
+                            <div
+                            class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="width: {{t.progress}}%"
+                            >
+                            {{t.progress}}%
+                            </div>
+                        </div>
+                        </td>
+                        <td>
+                            <select class="form-select">
+                                <option>Choose an action</option>
+                                <option>Edit</option>
+                                <option>Delete</option>
+                                <option>Duplicate</option>
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+    
+{% endblock  %}

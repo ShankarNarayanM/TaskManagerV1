@@ -1,0 +1,1 @@
+from .populate_task import Command as PopulateTasksCommand
